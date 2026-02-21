@@ -1,6 +1,6 @@
 function SpendingSummary() {
   return (
-    <div className='bg-light-navyblue w-90 rounded-xl border border-[#334155] px-4 py-5'>
+    <div className='bg-light-navyblue w-full rounded-xl border border-[#334155] px-4 py-5'>
       <p className='text-light-gray mb-6 text-xs font-medium'>
         Spending by Category
       </p>

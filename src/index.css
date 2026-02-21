@@ -3,9 +3,13 @@
 
 @theme {
   --font-inter: 'Inter', sans-serif;
+
+  --color-dark-navyblue: #0f172a;
   --color-light-navyblue: #1e293b;
+
   --color-light-gray: #94a3b8;
   --color-dark-gray: #64748b;
+
   --color-warm-red: #f43f5e;
   --color-warm-purple: #6366f1;
   --color-warm-green: #12b981;
