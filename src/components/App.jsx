@@ -1,5 +1,6 @@
 import AddSubForm from './AddSubForm';
 import Dashboard from './Dashboard';
+import DeleteSubDialog from './DeleteSubDialog';
 import EditSubForm from './EditSubForm';
 import Header from './Header';
 import Logo from './Logo';
@@ -35,6 +36,7 @@ function App() {
 
       {/* <AddSubForm /> */}
       {/* <EditSubForm /> */}
+      {/* <DeleteSubDialog /> */}
     </div>
   );
 }

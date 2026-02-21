@@ -3,7 +3,7 @@ import { X } from 'lucide-react';
 function AddSubForm() {
   return (
     <div className='fixed inset-0 z-20 flex items-center justify-center bg-black/70 backdrop-blur-xs'>
-      <form className='bg-light-navyblue w-xs rounded-2xl px-5 py-6 sm:w-md lg:w-md'>
+      <form className='bg-light-navyblue w-xs rounded-2xl border border-[#334155] px-5 py-6 sm:w-md lg:w-md'>
         <div className='mb-6 flex items-center justify-between'>
           <h2 className='text-xl font-semibold'>Add New Subscription</h2>
           <button
