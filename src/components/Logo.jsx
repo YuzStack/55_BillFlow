@@ -5,10 +5,10 @@ function Logo() {
         <img
           src='billflow-vector-logo.png'
           alt='BillFlow Logo'
-          className='h-3.75 w-3.75 text-white'
+          className='h-3.75 w-3.75'
         />
       </div>
-      <span className='font-inter text-base'>BillFlow</span>
+      <span className='text-base'>BillFlow</span>
     </div>
   );
 }

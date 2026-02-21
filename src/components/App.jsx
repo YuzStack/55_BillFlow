@@ -1,16 +1,27 @@
+import Dashboard from './Dashboard';
 import Logo from './Logo';
 import MonthlyBill from './MonthlyBill';
 import Nav from './Nav';
+import NextBill from './NextBill';
+import NumSubs from './NumSubs';
+import SpendingSummary from './SpendingSummary';
+import SubStat from './SubStat';
 
 function App() {
   return (
-    <div className='min-h-screen bg-[#0F172A] text-white'>
+    <div className='font-inter min-h-screen bg-[#0F172A] text-white'>
       <Nav>
         <Logo />
         <MonthlyBill />
       </Nav>
 
-      <div className='m-auto max-w-7xl'></div>
+      <Dashboard>
+        <SubStat>
+          <NextBill />
+          <NumSubs />
+          <SpendingSummary />
+        </SubStat>
+      </Dashboard>
     </div>
   );
 }
