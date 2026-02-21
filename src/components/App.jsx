@@ -1,3 +1,4 @@
+import AddSubForm from './AddSubForm';
 import Dashboard from './Dashboard';
 import Header from './Header';
 import Logo from './Logo';
@@ -30,6 +31,8 @@ function App() {
           <SubList />
         </Subscriptions>
       </Dashboard>
+
+      <AddSubForm />
     </div>
   );
 }
