@@ -12,7 +12,7 @@ const getCategoryColor = function (category) {
   }
 };
 
-function Sub({ sub, onStageDeleteSub }) {
+function Sub({ sub, onStageDeleteSub, onStageEditSub }) {
   return (
     <li className='flex min-w-75 items-center justify-between rounded-lg border-b border-[#293548] px-1 py-2 duration-300 hover:scale-101 hover:bg-[#293548] sm:p-4'>
       <div className='flex gap-4'>
@@ -37,7 +37,10 @@ function Sub({ sub, onStageDeleteSub }) {
           <p className='text-dark-gray text-xs'>/month</p>
         </div>
         <div className='flex items-center gap-0'>
-          <button className='text-dark-gray cursor-pointer rounded-lg p-2 duration-300 hover:scale-105 hover:bg-[#334156] hover:text-white'>
+          <button
+            onClick={() => onStageEditSub(sub.id)}
+            className='text-dark-gray cursor-pointer rounded-lg p-2 duration-300 hover:scale-105 hover:bg-[#334156] hover:text-white'
+          >
             <Pencil size={16} />
           </button>
           <button

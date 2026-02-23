@@ -19,6 +19,7 @@ function App() {
   const [subs, setSubs] = useState(initialSubscriptions);
   const [isAddingSub, setIsAddingSub] = useState(false);
   const [isDeletingSub, setIsDeletingSub] = useState(false);
+  const [isEditingSub, setIsEditingSub] = useState(false);
   const [selectedSub, setSelectedSub] = useState(null);
 
   const totalMonthlyBill = subs.reduce((acc, cur) => acc + cur.price, 0) || 0;
@@ -31,7 +32,6 @@ function App() {
   const handleStageDeleteSub = function (subId) {
     setIsDeletingSub(true);
 
-    // Get the selected subscription
     const selectedSub = subs.find(sub => sub.id === subId);
     setSelectedSub(selectedSub);
   };
@@ -43,6 +43,27 @@ function App() {
 
   const handleDeleteSub = function (subId) {
     setSubs(curSubs => curSubs.filter(sub => sub.id !== subId));
+  };
+
+  const handleStageEditSub = function (subId) {
+    setIsEditingSub(true);
+
+    const selectedSub = subs.find(sub => sub.id === subId);
+    setSelectedSub(selectedSub);
+  };
+
+  const handleUnstageEditSub = function () {
+    setSelectedSub(null);
+    setIsEditingSub(false);
+  };
+
+  const handleEditSub = function (editedSubObj) {
+    setSubs(curSubs =>
+      curSubs.map(sub => (sub.id === selectedSub.id ? editedSubObj : sub)),
+    );
+
+    setSelectedSub(null);
+    setIsEditingSub(false);
   };
 
   return (
@@ -61,7 +82,11 @@ function App() {
 
         <Subscriptions>
           <Header numSubs={numSubs} setIsAddingSub={setIsAddingSub} />
-          <SubList subs={subs} onStageDeleteSub={handleStageDeleteSub} />
+          <SubList
+            subs={subs}
+            onStageDeleteSub={handleStageDeleteSub}
+            onStageEditSub={handleStageEditSub}
+          />
         </Subscriptions>
       </Dashboard>
 
@@ -69,12 +94,18 @@ function App() {
         <AddSubForm onAddSub={handleAddSub} setIsAddingSub={setIsAddingSub} />
       )}
 
-      {/* <EditSubForm /> */}
+      {isEditingSub && (
+        <EditSubForm
+          selectedSub={selectedSub}
+          onUnstageEditSub={handleUnstageEditSub}
+          onEditSub={handleEditSub}
+        />
+      )}
 
       {isDeletingSub && (
         <DeleteSubDialog
           selectedSub={selectedSub}
-          onUnstageSub={handleUnstageDeleteSub}
+          onUnstageDeleteSub={handleUnstageDeleteSub}
           onDeleteSub={handleDeleteSub}
         />
       )}

@@ -1,9 +1,9 @@
 import { TriangleAlert } from 'lucide-react';
 
-function DeleteSubDialog({ selectedSub, onUnstageSub, onDeleteSub }) {
+function DeleteSubDialog({ selectedSub, onUnstageDeleteSub, onDeleteSub }) {
   const handleDeleteSub = function () {
     onDeleteSub(selectedSub.id);
-    onUnstageSub();
+    onUnstageDeleteSub();
   };
 
   return (
@@ -25,7 +25,7 @@ function DeleteSubDialog({ selectedSub, onUnstageSub, onDeleteSub }) {
 
         <div className='flex gap-3'>
           <button
-            onClick={onUnstageSub}
+            onClick={onUnstageDeleteSub}
             type='button'
             className='h-10 flex-1 cursor-pointer rounded-lg bg-[#334155] p-2 text-sm font-medium duration-300 hover:scale-102 hover:bg-[#475569] sm:h-12 sm:px-4 sm:py-2.5 sm:text-base'
           >
