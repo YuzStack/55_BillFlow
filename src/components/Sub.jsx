@@ -1,21 +1,39 @@
 import { Pencil, Trash2 } from 'lucide-react';
+import { getDaySuffix } from './helpers';
 
-function Sub() {
+const getCategoryColor = function (category) {
+  switch (category) {
+    case 'Entertainment':
+      return 'bg-warm-red';
+    case 'Productivity':
+      return 'bg-warm-purple';
+    default:
+      return 'bg-warm-green';
+  }
+};
+
+function Sub({ sub }) {
   return (
     <li className='flex items-center justify-between rounded-lg border-b border-[#293548] p-4 duration-300 hover:scale-101 hover:bg-[#293548]'>
       <div className='flex gap-4'>
-        <div className='bg-warm-red flex h-10 w-10 items-center justify-center rounded-full'>
-          <span className='text-xs font-medium'>N</span>
+        <div
+          className={`${getCategoryColor(sub.category)} flex h-10 w-10 items-center justify-center rounded-full`}
+        >
+          <span className='text-xs font-medium'>{sub.name.split('')[0]}</span>
         </div>
         <div>
-          <h3 className='text-sm font-medium'>Netflix</h3>
-          <p className='text-dark-gray text-xs'>Bills on the 15th</p>
+          <h3 className='text-sm font-medium'>{sub.name}</h3>
+          <p className='text-dark-gray text-xs'>
+            Bills on the {`${sub.billingDate}${getDaySuffix(sub.billingDate)}`}
+          </p>
         </div>
       </div>
 
       <div className='flex items-center gap-4'>
         <div className='text-end'>
-          <p className='text-base font-semibold tracking-wider'>$ 15.99</p>
+          <p className='text-base font-semibold tracking-wider'>
+            $ {sub.price}
+          </p>
           <p className='text-dark-gray text-xs'>/month</p>
         </div>
         <div className='flex items-center gap-0'>
