@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AddSubForm from './AddSubForm';
 import Dashboard from './Dashboard';
 import DeleteSubDialog from './DeleteSubDialog';
@@ -13,10 +13,14 @@ import SpendingSummary from './SpendingSummary';
 import SubList from './SubList';
 import Subscriptions from './Subscriptions';
 import SubStat from './SubStat';
-import initialSubscriptions from '../data-template';
+// import initialSubscriptions from '../data-template';
 
 function App() {
-  const [subs, setSubs] = useState(initialSubscriptions);
+  const [subs, setSubs] = useState(function () {
+    const storedSubs = JSON.parse(localStorage.getItem('subs'));
+    return storedSubs ? storedSubs : [];
+  });
+
   const [isAddingSub, setIsAddingSub] = useState(false);
   const [isDeletingSub, setIsDeletingSub] = useState(false);
   const [isEditingSub, setIsEditingSub] = useState(false);
@@ -24,6 +28,13 @@ function App() {
 
   const totalMonthlyBill = subs.reduce((acc, cur) => acc + cur.price, 0) || 0;
   const numSubs = subs.length;
+
+  useEffect(
+    function () {
+      localStorage.setItem('subs', JSON.stringify(subs));
+    },
+    [subs],
+  );
 
   const handleAddSub = function (sub) {
     setSubs(curSubs => [...curSubs, sub]);
