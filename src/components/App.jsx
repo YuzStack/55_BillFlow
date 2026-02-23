@@ -18,12 +18,31 @@ import initialSubscriptions from '../data-template';
 function App() {
   const [subs, setSubs] = useState(initialSubscriptions);
   const [isAddingSub, setIsAddingSub] = useState(false);
+  const [isDeletingSub, setIsDeletingSub] = useState(false);
+  const [selectedSub, setSelectedSub] = useState(null);
 
-  const totalMonthlyBill = subs.reduce((acc, cur) => acc + cur.price, 0);
+  const totalMonthlyBill = subs.reduce((acc, cur) => acc + cur.price, 0) || 0;
   const numSubs = subs.length;
 
   const handleAddSub = function (sub) {
     setSubs(curSubs => [...curSubs, sub]);
+  };
+
+  const handleStageDeleteSub = function (subId) {
+    setIsDeletingSub(true);
+
+    // Get the selected subscription
+    const selectedSub = subs.find(sub => sub.id === subId);
+    setSelectedSub(selectedSub);
+  };
+
+  const handleUnstageDeleteSub = function () {
+    setSelectedSub(null);
+    setIsDeletingSub(false);
+  };
+
+  const handleDeleteSub = function (subId) {
+    setSubs(curSubs => curSubs.filter(sub => sub.id !== subId));
   };
 
   return (
@@ -35,22 +54,30 @@ function App() {
 
       <Dashboard>
         <SubStat>
-          <NextBill subs={subs} />
+          {subs.length > 0 && <NextBill subs={subs} />}
           <NumSubs numSubs={numSubs} />
           <SpendingSummary totalMonthlyBill={totalMonthlyBill} subs={subs} />
         </SubStat>
 
         <Subscriptions>
           <Header numSubs={numSubs} setIsAddingSub={setIsAddingSub} />
-          <SubList subs={subs} />
+          <SubList subs={subs} onStageDeleteSub={handleStageDeleteSub} />
         </Subscriptions>
       </Dashboard>
 
       {isAddingSub && (
         <AddSubForm onAddSub={handleAddSub} setIsAddingSub={setIsAddingSub} />
       )}
+
       {/* <EditSubForm /> */}
-      {/* <DeleteSubDialog /> */}
+
+      {isDeletingSub && (
+        <DeleteSubDialog
+          selectedSub={selectedSub}
+          onUnstageSub={handleUnstageDeleteSub}
+          onDeleteSub={handleDeleteSub}
+        />
+      )}
     </div>
   );
 }

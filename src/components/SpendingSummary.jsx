@@ -1,13 +1,15 @@
 function SpendingSummary({ totalMonthlyBill, subs }) {
   const getTotalCategoryBill = function (category) {
-    return subs
-      .filter(sub => sub.category === category)
-      .reduce((acc, cur) => acc + cur.price, 0)
-      .toFixed(0);
+    return subs.length > 0
+      ? subs
+          .filter(sub => sub.category === category)
+          .reduce((acc, cur) => acc + cur.price, 0)
+          .toFixed(0)
+      : 0;
   };
 
   return (
-    <div className='bg-light-navyblue w-full rounded-xl border border-[#334155] px-4 py-5'>
+    <div className='bg-light-navyblue w-full rounded-xl border border-[#334155] p-2.5 sm:px-4 sm:py-5'>
       <p className='text-light-gray mb-6 text-xs font-medium'>
         Spending by Category
       </p>

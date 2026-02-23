@@ -1,6 +1,6 @@
 function NumSubs({ numSubs }) {
   return (
-    <div className='bg-light-navyblue w-full rounded-xl border border-[#334155] px-4 py-5'>
+    <div className='bg-light-navyblue w-full rounded-xl border border-[#334155] p-2.5 sm:px-4 sm:py-5'>
       <div className='mb-3 flex justify-between'>
         <p className='text-light-gray text-xs font-medium'>
           Total Subscriptions
