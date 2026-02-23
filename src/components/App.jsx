@@ -17,9 +17,14 @@ import initialSubscriptions from '../data-template';
 
 function App() {
   const [subs, setSubs] = useState(initialSubscriptions);
+  const [isAddingSub, setIsAddingSub] = useState(false);
 
   const totalMonthlyBill = subs.reduce((acc, cur) => acc + cur.price, 0);
   const numSubs = subs.length;
+
+  const handleAddSub = function (sub) {
+    setSubs(curSubs => [...curSubs, sub]);
+  };
 
   return (
     <div className='font-inter bg-dark-navyblue min-h-screen text-white'>
@@ -36,12 +41,14 @@ function App() {
         </SubStat>
 
         <Subscriptions>
-          <Header numSubs={numSubs} />
+          <Header numSubs={numSubs} setIsAddingSub={setIsAddingSub} />
           <SubList subs={subs} />
         </Subscriptions>
       </Dashboard>
 
-      {/* <AddSubForm /> */}
+      {isAddingSub && (
+        <AddSubForm onAddSub={handleAddSub} setIsAddingSub={setIsAddingSub} />
+      )}
       {/* <EditSubForm /> */}
       {/* <DeleteSubDialog /> */}
     </div>

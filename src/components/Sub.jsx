@@ -14,7 +14,7 @@ const getCategoryColor = function (category) {
 
 function Sub({ sub }) {
   return (
-    <li className='flex items-center justify-between rounded-lg border-b border-[#293548] p-4 duration-300 hover:scale-101 hover:bg-[#293548]'>
+    <li className='flex min-w-75 items-center justify-between rounded-lg border-b border-[#293548] px-1 py-2 duration-300 hover:scale-101 hover:bg-[#293548] sm:p-4'>
       <div className='flex gap-4'>
         <div
           className={`${getCategoryColor(sub.category)} flex h-10 w-10 items-center justify-center rounded-full`}

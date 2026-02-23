@@ -7,7 +7,7 @@ function NumSubs({ numSubs }) {
         </p>
         <img src='2_icon.png' alt='Icon' className='h-5 w-5' />
       </div>
-      <p className='mb-2 text-xl font-semibold'>{numSubs}</p>
+      <p className='mb-2 text-lg font-semibold sm:text-xl'>{numSubs}</p>
       <p className='text-dark-gray text-xs'>Active services</p>
     </div>
   );

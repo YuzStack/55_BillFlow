@@ -21,7 +21,7 @@ function NextBill({ subs }) {
         <p className='text-light-gray text-xs font-medium'>Next Bill Due</p>
         <img src='1_icon.png' alt='Icon' className='h-5 w-5' />
       </div>
-      <p className='mb-2 text-xl font-semibold'>{nextBill.name}</p>
+      <p className='mb-2 text-lg font-semibold sm:text-xl'>{nextBill.name}</p>
       <p className='text-dark-gray text-xs'>
         ${nextBill.price} on the{' '}
         {`${nextBill.billingDate}${getDaySuffix(nextBill.billingDate)}`}
