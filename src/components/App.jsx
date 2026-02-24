@@ -16,6 +16,8 @@ import SubStat from './SubStat';
 // import initialSubscriptions from '../data-template';
 
 function App() {
+  // const [subs, setSubs] = useState(initialSubscriptions);
+
   const [subs, setSubs] = useState(function () {
     const storedSubs = JSON.parse(localStorage.getItem('subs'));
     return storedSubs ? storedSubs : [];
