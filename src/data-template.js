@@ -23,7 +23,7 @@ const initialSubscriptions = [
   {
     id: crypto.randomUUID(),
     name: 'iCloud+',
-    price: 0.99,
+    price: 10.99,
     billingDate: 1,
     category: 'Cloud Storage',
   },
