@@ -13,7 +13,7 @@ import SpendingSummary from './SpendingSummary';
 import SubList from './SubList';
 import Subscriptions from './Subscriptions';
 import SubStat from './SubStat';
-// import initialSubscriptions from '../data-template';
+// import initialSubscriptions from '../mock-data';
 
 function App() {
   // const [subs, setSubs] = useState(initialSubscriptions);
