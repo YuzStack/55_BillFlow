@@ -1,4 +1,4 @@
-import { getDaySuffix } from './helpers';
+import { getDaySuffix } from '../helpers';
 
 function NextBill({ subs }) {
   const getNextBill = function (subs) {

@@ -1,5 +1,5 @@
 import { Pencil, Trash2 } from 'lucide-react';
-import { getDaySuffix } from './helpers';
+import { getDaySuffix } from '../helpers';
 
 const getCategoryColor = function (category) {
   switch (category) {
