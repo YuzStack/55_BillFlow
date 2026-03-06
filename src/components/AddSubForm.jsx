@@ -9,6 +9,7 @@ function AddSubForm({ onAddSub, setIsAddingSub }) {
 
   const handleSubmit = function (e) {
     e.preventDefault();
+    if (billingDate === 0 || price === 0) return;
 
     const newSub = {
       id: crypto.randomUUID(),

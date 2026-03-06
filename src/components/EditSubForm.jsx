@@ -9,6 +9,7 @@ function EditSubForm({ selectedSub, onUnstageEditSub, onEditSub }) {
 
   const handleSubmit = function (e) {
     e.preventDefault();
+    if (billingDate === 0 || price === 0) return;
 
     const editedSub = {
       id: crypto.randomUUID(),
